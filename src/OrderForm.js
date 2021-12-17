@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function pizzaForm({
+export default function OrderForm({
   orderInfo,
   orderChange,
   orderSubmit,
@@ -70,6 +70,7 @@ export default function pizzaForm({
           />
         </label>
         <label>
+          Olives:
           <input
             type="checkbox"
             name="olives"
@@ -78,6 +79,8 @@ export default function pizzaForm({
           />
         </label>
         <label>
+          {" "}
+          Special Instructions:
           <input
             type="text"
             name="special"

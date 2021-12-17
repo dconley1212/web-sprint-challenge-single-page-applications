@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import Home from "./Home";
 import Pizza from "./Pizza";
 import OrderForm from "./OrderForm";
@@ -49,7 +49,7 @@ const App = () => {
       .post("https://reqres.in/api/orders", newOrder)
       .then((response) => {
         console.log(response);
-        setOrders([...orders, response.data]);
+        setOrders([...orders, response]);
       })
       .catch((err) => console.log(err))
       .finally(() => setOrderInfo(initialOrderInfo));
@@ -75,23 +75,32 @@ const App = () => {
 
   return (
     <div>
-      <Switch>
-        <Route>
-          <Pizza path="/pizza/id" />
-        </Route>
-        <Route path="/pizza">
-          <OrderForm
-            orderInfo={orderInfo}
-            orderChange={orderChange}
-            orderSubmit={orderSubmit}
-            errors={formErrors}
-            disabled={disabled}
-          />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+      <nav>
+        <h1>Lambda Eats</h1>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/pizza">Order</Link>
+          </li>
+        </ul>
+      </nav>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/pizza">
+        <OrderForm
+          orderInfo={orderInfo}
+          orderChange={orderChange}
+          orderSubmit={orderSubmit}
+          errors={formErrors}
+          disabled={disabled}
+        />
+      </Route>
+      <Route>
+        <Pizza path="/pizza/:id" orders={orders} />
+      </Route>
     </div>
   );
 };
