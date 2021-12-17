@@ -7,7 +7,7 @@ export default function home() {
       <div className="home-wrapper">
         <h2>Your favorite Pizza, delivered while coding</h2>
         <Link to="/pizza">
-          <button>Order Now!</button>
+          <button id="order-pizza">Order Now!</button>
         </Link>
       </div>
     </div>

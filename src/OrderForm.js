@@ -21,7 +21,7 @@ export default function OrderForm({
   return (
     <div className="order-form">
       <h2>Build your Pizza</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="pizza-form">
         <label>
           {" "}
           Name:
@@ -35,7 +35,12 @@ export default function OrderForm({
         </label>
         <label>
           Pizza Size:
-          <select name="size" value={orderInfo.size} onChange={handleChange}>
+          <select
+            name="size"
+            value={orderInfo.size}
+            onChange={handleChange}
+            id="size-dropdown"
+          >
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -86,9 +91,12 @@ export default function OrderForm({
             name="special"
             value={orderInfo.special}
             onChange={handleChange}
+            id="special-text"
           />
         </label>
-        <button disabled={disabled}>Submit!</button>
+        <button id="order-button" disabled={disabled}>
+          Submit!
+        </button>
         <div className="errors">
           <p>{errors.name}</p>
         </div>
